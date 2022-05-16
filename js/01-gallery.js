@@ -44,8 +44,26 @@ function openModal(selectedElement) {
     <img src="${selectedElement}" class = "modal">
 `);
   modalForm.show();
+
+  document.addEventListener('keydown', event => {
+    event.preventDefault();
+
+    if (event.code === 'Escape') {
+      modalForm.close();
+    }
+  });
 }
 
+// function closeModal() {
+//   // basicLightbox.close();
+// }
+
+// document.addEventListener('keydown', closeModal);
+
+// document.addEventListener('keydown', event => {
+//   console.log('key: ', event.key);
+//   console.log('code: ', event.code);
+// });
 // const but = document.querySelector('.button');
 // //console.log(but);
 
