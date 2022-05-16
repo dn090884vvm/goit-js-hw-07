@@ -41,7 +41,7 @@ function onGalleryContainerClick(evt) {
 
 function openModal(selectedImage) {
   const modalForm = basicLightbox.create(`
-    <img src="${selectedImage} class = "modal">
+    <img src="${selectedImage}' class = "modal">
 `);
   modalForm.show();
 }
