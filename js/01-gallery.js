@@ -25,23 +25,34 @@ function createImegaesCardsMarkup(galleryItems) {
     .join('');
 }
 
-galleryContainer.addEventListener('click', onGalleryContainerClick);
+galleryContainer.addEventListener('click', onGalleryElementClick);
 
-function onGalleryContainerClick(evt) {
-  evt.preventDefault();
+function onGalleryElementClick(event) {
+  event.preventDefault();
 
-  const isGalleryContainerEl = evt.target.classList.contains('gallery__image');
+  const isGalleryElement = event.target.classList.contains('gallery__image');
 
-  if (!isGalleryContainerEl) {
+  if (!isGalleryElement) {
     return;
   }
-  const selectedImage = evt.target.dataset.source;
-  openModal(selectedImage);
+  const selectedElement = event.target.dataset.source;
+  openModal(selectedElement);
 }
 
-function openModal(selectedImage) {
+function openModal(selectedElement) {
   const modalForm = basicLightbox.create(`
-    <img src="${selectedImage}" class = "modal">
+    <img src="${selectedElement}" class = "modal">
 `);
   modalForm.show();
 }
+
+// const but = document.querySelector('.button');
+// //console.log(but);
+
+// but.addEventListener('click', open);
+
+// function open(event) {
+//   //event.preventDefault;
+//   const form = basicLightbox.create(`<img src="" class = "modal">`);
+//   form.show();
+// }
