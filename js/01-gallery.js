@@ -6,8 +6,6 @@ console.log(galleryItems);
 const galleryContainer = document.querySelector('.gallery');
 const imagesMarkup = createImegaesCardsMarkup(galleryItems);
 
-galleryContainer.insertAdjacentHTML('beforeend', imagesMarkup);
-
 function createImegaesCardsMarkup(galleryItems) {
   return galleryItems
     .map(({ preview, original, description }) => {
@@ -24,6 +22,7 @@ function createImegaesCardsMarkup(galleryItems) {
     })
     .join('');
 }
+galleryContainer.insertAdjacentHTML('beforeend', imagesMarkup);
 
 galleryContainer.addEventListener('click', onGalleryElementClick);
 
