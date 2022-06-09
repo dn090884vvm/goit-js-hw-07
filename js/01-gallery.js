@@ -39,19 +39,57 @@ function onGalleryElementClick(event) {
 }
 
 function openModal(selectedElement) {
-  const modalForm = basicLightbox.create(`
-    <img src="${selectedElement}" class = "modal">
-`);
+  const modalForm = basicLightbox.create(
+    `
+    <img src="${selectedElement}" class = "modal"> `,
+    {
+      onShow: onOpenedModal,
+      onClose: onClosedModal,
+    }
+  );
   modalForm.show();
 
-  document.addEventListener('keydown', event => {
-    event.preventDefault();
+  // document.addEventListener('keydown', event => {
+  //   event.preventDefault();
 
+  //   if (event.code === 'Escape') {
+  //     modalForm.close();
+  //   }
+  // });
+
+  function onOpenedModal() {
+    document.addEventListener('keydown', escapeButtonPressed);
+    console.log('Opened');
+  }
+
+  function onClosedModal() {
+    document.removeEventListener('keydown', escapeButtonPressed);
+    console.log('Closed');
+  }
+
+  function escapeButtonPressed(event) {
     if (event.code === 'Escape') {
+      //return;
       modalForm.close();
     }
-  });
+    // console.log(event.code);
+  }
 }
+
+// function onOpenedModal() {
+//   document.addEventListener('keydown', escapeButtonPressed);
+// }
+
+// function onClosedModal() {
+//   document.removeEventListener('keydown', escapeButtonPressed);
+// }
+
+// function escapeButtonPressed(event) {
+//   if (event.code !== 'Escape') {
+//     return;
+//   }
+//   modalForm.close();
+// }
 
 // function closeModal() {
 //   // basicLightbox.close();
